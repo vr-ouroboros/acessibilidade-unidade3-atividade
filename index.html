@@ -45,6 +45,8 @@
   input[type=text], input[type=email], input[type=tel], input[type=password] { width:100%; padding:9px; border:1px solid #c3c9d6; border-radius:5px; margin-bottom:12px; font-size:14px; }
   .rotulo-campo { display:block; font-weight:600; margin:14px 0 6px; }
   .erro { color:#c0392b; font-size:13px; margin:-6px 0 12px; }
+  fieldset { border:1px solid #c3c9d6; border-radius:5px; margin:14px 0; padding:10px 12px; }
+  legend { font-weight:600; padding:0 4px; }
   #rodape { background:#1f2a44; color:#b9c4de; padding:20px 24px; font-size:13px; margin-top:10px; }
   #rodape a { color:#dbe2f2; }
   .aviso { background:#fff8e1; border:1px solid #f0dfa8; padding:12px 14px; border-radius:6px; font-size:14px; }
@@ -183,12 +185,12 @@
       <input type="password" id="senha" name="senha" placeholder="Crie uma senha" minlength="8" aria-invalid="true" aria-describedby="erro-senha">
       <div class="erro" id="erro-senha">Senha inválida. Digite pelo menos 8 caracteres.</div>
 
-      <div style="font-weight:600; margin:14px 0 6px;">Turno preferido para contato *</div>
-      <div>
+      <fieldset>
+        <legend>Turno preferido para contato *</legend>
         <input type="radio" name="turno" id="manha" value="manha"> Manhã<br>
         <input type="radio" name="turno" id="tarde" value="tarde"> Tarde<br>
         <input type="radio" name="turno" id="noite" value="noite"> Noite
-      </div>
+      </fieldset>
 
       <div style="font-weight:600; margin:14px 0 6px;">Assuntos de interesse</div>
       <div>
