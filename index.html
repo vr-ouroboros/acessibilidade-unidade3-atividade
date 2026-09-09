@@ -31,7 +31,7 @@
   .botao { display:inline-block; background:#c0392b; color:#fff; padding:9px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:14px; }
   table { border-collapse: collapse; width:100%; margin:14px 0; font-size:14px; }
   caption { font-weight:700; text-align:left; padding-bottom:8px; }
-  td { border:1px solid #d9dee9; padding:9px 11px; }
+  td, th { border:1px solid #d9dee9; padding:9px 11px; text-align:left; }
   .cab { background:#eef0f5; font-weight:700; }
   input[type=text], input[type=email], input[type=password] { width:100%; padding:9px; border:1px solid #c3c9d6; border-radius:5px; margin-bottom:12px; font-size:14px; }
   .erro { color:#c0392b; font-size:13px; margin:-6px 0 12px; }
@@ -121,10 +121,10 @@
     <table>
       <caption>Características e preços das guitarras elétricas</caption>
       <tr>
-        <td class="cab">Modelo</td>
-        <td class="cab">Captadores</td>
-        <td class="cab">Escala</td>
-        <td class="cab">Preço</td>
+        <th class="cab" scope="col">Modelo</th>
+        <th class="cab" scope="col">Captadores</th>
+        <th class="cab" scope="col">Escala</th>
+        <th class="cab" scope="col">Preço</th>
       </tr>
       <tr>
         <td class="cab">Stratocaster HSS</td>
