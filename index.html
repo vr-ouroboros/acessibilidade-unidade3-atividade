@@ -42,7 +42,7 @@
   caption { font-weight:700; text-align:left; padding-bottom:8px; }
   td, th { border:1px solid #d9dee9; padding:9px 11px; text-align:left; }
   .cab { background:#eef0f5; font-weight:700; }
-  input[type=text], input[type=email], input[type=password] { width:100%; padding:9px; border:1px solid #c3c9d6; border-radius:5px; margin-bottom:12px; font-size:14px; }
+  input[type=text], input[type=email], input[type=tel], input[type=password] { width:100%; padding:9px; border:1px solid #c3c9d6; border-radius:5px; margin-bottom:12px; font-size:14px; }
   .rotulo-campo { display:block; font-weight:600; margin:14px 0 6px; }
   .erro { color:#c0392b; font-size:13px; margin:-6px 0 12px; }
   #rodape { background:#1f2a44; color:#b9c4de; padding:20px 24px; font-size:13px; margin-top:10px; }
@@ -176,8 +176,8 @@
       <input type="email" id="email" name="email" placeholder="nome@exemplo.com" required aria-invalid="true" aria-describedby="erro-email">
       <div class="erro" id="erro-email">E-mail inválido. Digite um endereço no formato nome@exemplo.com.</div>
 
-      <label>Telefone</label>
-      <input type="text" id="telefone" placeholder="(00) 00000-0000">
+      <label class="rotulo-campo" for="telefone">Telefone</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
 
       <input type="password" id="senha" placeholder="Crie uma senha">
       <div class="erro">Erro.</div>
