@@ -25,6 +25,8 @@
   #conteudo { flex:1 1 auto; min-width:0; }
   .lateral { flex:0 0 250px; background:#f2f4f9; border:1px solid #e0e4ee; padding:16px; border-radius:8px; font-size:14px; }
   .titulo-lateral { font-size:14px; margin:0 0 8px; }
+  .links-relacionados { list-style:none; margin:0; padding:0; }
+  .links-relacionados li:not(:last-child) { margin-bottom:1.55em; }
   .titulo-pagina { font-size:28px; font-weight:800; margin:0 0 6px; }
   h3, h2, h6 { margin: 26px 0 10px; }
   h3 { font-size:21px; }
@@ -200,9 +202,11 @@
 
   <aside class="lateral">
     <h2 class="titulo-lateral">Conteúdo relacionado</h2>
-    <a href="afinacao.html">Aprenda a afinar sua guitarra</a>.<br><br>
-    <a href="manutencao.html">Veja os cuidados de manutenção dos instrumentos</a>.<br><br>
-    <a href="blog.html" target="_blank" rel="noopener">Leia o blog da Harmonia (abre em nova aba)</a>.
+    <ul class="links-relacionados">
+      <li><a href="afinacao.html">Aprenda a afinar sua guitarra</a>.</li>
+      <li><a href="manutencao.html">Veja os cuidados de manutenção dos instrumentos</a>.</li>
+      <li><a href="blog.html" target="_blank" rel="noopener">Leia o blog da Harmonia (abre em nova aba)</a>.</li>
+    </ul>
   </aside>
 
 </div>
