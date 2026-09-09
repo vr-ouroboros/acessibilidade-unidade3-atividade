@@ -18,6 +18,9 @@
   #menu a:hover { text-decoration:underline; }
   #trilha { padding:10px 24px; font-size:13px; color:#5b6478; background:#eef0f5; }
   #trilha a { color:#5b6478; }
+  #trilha ol { list-style:none; margin:0; padding:0; }
+  #trilha li { display:inline; }
+  #trilha li + li::before { content:" > "; }
   #miolo { display:flex; gap:28px; padding:24px; align-items:flex-start; }
   #conteudo { flex:1 1 auto; min-width:0; }
   .lateral { flex:0 0 250px; background:#f2f4f9; border:1px solid #e0e4ee; padding:16px; border-radius:8px; font-size:14px; }
@@ -65,7 +68,11 @@
   </nav>
 
   <nav id="trilha" aria-label="Trilha de navegação">
-    <a href="index.html">Início</a> &gt; <a href="guitarras.html">Guitarras</a> &gt; Guitarras Elétricas
+    <ol>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="guitarras.html">Guitarras</a></li>
+      <li aria-current="page">Guitarras Elétricas</li>
+    </ol>
   </nav>
 
 <div id="miolo">
