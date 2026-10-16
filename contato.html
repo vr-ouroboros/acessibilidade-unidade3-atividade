@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contato e cadastro — Harmonia Instrumentos Musicais</title>
+<link rel="stylesheet" href="styles.css">
+<script src="cadastro.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+<div class="wrap">
+
+  <header id="topo">
+    <div>
+      <div class="titulo-principal">Harmonia Instrumentos Musicais</div>
+      <div class="subtitulo">Tudo para o seu som desde 1998</div>
+    </div>
+    <fieldset class="tema">
+      <legend>Tema</legend>
+      <span class="tema-opcao"><input type="radio" name="tema" id="tema-sistema" value="sistema" checked> <label for="tema-sistema">Sistema</label></span>
+      <span class="tema-opcao"><input type="radio" name="tema" id="tema-claro" value="claro"> <label for="tema-claro">Claro</label></span>
+      <span class="tema-opcao"><input type="radio" name="tema" id="tema-escuro" value="escuro"> <label for="tema-escuro">Escuro</label></span>
+    </fieldset>
+    <a href="carrinho.html"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Cpath%20d%3D%22M1.5%202h3l2.7%2012.4a2%202%200%200%200%202%201.6h8.1a2%202%200%200%200%202-1.6L21%206H6%22%2F%3E%3C%2Fsvg%3E" width="34" height="34" alt="Ir para o carrinho"></a>
+  </header>
+
+  <nav id="menu" aria-label="Navegação principal">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="guitarras.html">Guitarras</a></li>
+      <li><a href="baterias.html">Baterias</a></li>
+      <li><a href="teclados.html">Teclados</a></li>
+      <li><a href="contato.html" aria-current="page">Contato</a></li>
+    </ul>
+  </nav>
+
+  <nav id="trilha" aria-label="Trilha de navegação">
+    <ol>
+      <li><a href="index.html">Início</a></li>
+      <li aria-current="page">Contato e cadastro</li>
+    </ol>
+  </nav>
+
+<div id="miolo">
+
+  <main id="conteudo" tabindex="-1">
+
+    <h1 class="titulo-pagina">Contato e cadastro</h1>
+    <p id="sobre-demonstracao">Este é um cadastro de demonstração. Os dados são validados apenas nesta página; não são enviados nem armazenados pelo site.</p>
+    <p class="aviso" id="cadastro-instrucoes">Os campos com a indicação “obrigatório” devem ser preenchidos. Os demais são opcionais.</p>
+
+    <form id="cadastro" class="cadastro" action="contato.html" method="post" aria-describedby="cadastro-instrucoes">
+      <section id="resumo-erros" class="resumo-erros" aria-labelledby="resumo-erros-titulo" tabindex="-1" hidden>
+        <h2 id="resumo-erros-titulo">Revise os campos indicados</h2>
+        <p>Selecione um erro para ir ao campo correspondente.</p>
+        <ul id="lista-erros"></ul>
+      </section>
+
+      <fieldset>
+        <legend>Dados pessoais</legend>
+        <div class="campo">
+          <label class="rotulo-campo" for="nome">Nome completo (obrigatório)</label>
+          <p class="instrucao" id="nome-ajuda">Informe seu nome completo, como você usa no dia a dia.</p>
+          <input type="text" id="nome" name="nome" autocomplete="name" required aria-describedby="nome-ajuda erro-nome" data-validar>
+          <p class="erro" id="erro-nome" aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <div class="campo">
+          <label class="rotulo-campo" for="email">E-mail (obrigatório)</label>
+          <p class="instrucao" id="email-ajuda">Use o formato nome@exemplo.com.</p>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-ajuda erro-email" data-validar>
+          <p class="erro" id="erro-email" aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <div class="campo">
+          <label class="rotulo-campo" for="cpf">CPF (obrigatório)</label>
+          <p class="instrucao" id="cpf-ajuda">Informe os 11 dígitos, com ou sem pontuação: 000.000.000-00.</p>
+          <input type="text" id="cpf" name="cpf" inputmode="numeric" autocomplete="off" maxlength="14" required aria-describedby="cpf-ajuda erro-cpf" data-validar>
+          <p class="erro" id="erro-cpf" aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <div class="campo">
+          <label class="rotulo-campo" for="nascimento">Data de nascimento (obrigatório)</label>
+          <p class="instrucao" id="nascimento-ajuda">Selecione ou digite dia, mês e ano. A data não pode estar no futuro.</p>
+          <input type="date" id="nascimento" name="nascimento" autocomplete="bday" required aria-describedby="nascimento-ajuda erro-nascimento" data-validar>
+          <p class="erro" id="erro-nascimento" aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <div class="campo">
+          <label class="rotulo-campo" for="telefone">Telefone (opcional)</label>
+          <p class="instrucao" id="telefone-ajuda">Informe DDD e número com 10 ou 11 dígitos, como (11) 91234-5678. O código +55 é opcional.</p>
+          <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" aria-describedby="telefone-ajuda erro-telefone" data-validar>
+          <p class="erro" id="erro-telefone" aria-live="polite" aria-atomic="true"></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Segurança da conta</legend>
+        <div class="campo">
+          <label class="rotulo-campo" for="senha">Senha (obrigatório)</label>
+          <p class="instrucao" id="senha-ajuda">Use pelo menos 8 caracteres, incluindo uma letra e um número. Espaços são permitidos.</p>
+          <input type="password" id="senha" name="senha" autocomplete="new-password" minlength="8" required aria-describedby="senha-ajuda erro-senha" data-validar>
+          <p class="erro" id="erro-senha" aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <div class="campo">
+          <label class="rotulo-campo" for="confirmacao">Confirmação de senha (obrigatório)</label>
+          <p class="instrucao" id="confirmacao-ajuda">Repita exatamente a senha informada acima.</p>
+          <input type="password" id="confirmacao" name="confirmacao" autocomplete="new-password" required aria-describedby="confirmacao-ajuda erro-confirmacao" data-validar>
+          <p class="erro" id="erro-confirmacao" aria-live="polite" aria-atomic="true"></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Gênero (opcional)</legend>
+        <p class="instrucao">Selecione uma opção, se desejar informar.</p>
+        <div class="opcao"><input type="radio" id="genero-feminino" name="genero" value="feminino"> <label for="genero-feminino">Feminino</label></div>
+        <div class="opcao"><input type="radio" id="genero-masculino" name="genero" value="masculino"> <label for="genero-masculino">Masculino</label></div>
+        <div class="opcao"><input type="radio" id="genero-nao-binario" name="genero" value="nao-binario"> <label for="genero-nao-binario">Não binário</label></div>
+        <div class="opcao"><input type="radio" id="genero-nao-informado" name="genero" value="nao-informado"> <label for="genero-nao-informado">Prefiro não informar</label></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Interesses (opcional)</legend>
+        <p class="instrucao">Você pode escolher mais de uma opção.</p>
+        <div class="opcao"><input type="checkbox" id="interesse-guitarras" name="interesses" value="guitarras"> <label for="interesse-guitarras">Guitarras e baixos</label></div>
+        <div class="opcao"><input type="checkbox" id="interesse-baterias" name="interesses" value="baterias"> <label for="interesse-baterias">Baterias e percussão</label></div>
+        <div class="opcao"><input type="checkbox" id="interesse-teclados" name="interesses" value="teclados"> <label for="interesse-teclados">Teclados e sintetizadores</label></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Sobre sua visita</legend>
+        <label class="rotulo-campo" for="origem">Como conheceu o site? (opcional)</label>
+        <select id="origem" name="origem">
+          <option value="">Selecione uma opção</option>
+          <option value="buscador">Busca na internet</option>
+          <option value="redes-sociais">Redes sociais</option>
+          <option value="indicacao">Indicação de outra pessoa</option>
+          <option value="outro">Outro</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Termos de uso</legend>
+        <details id="termos-cadastro">
+          <summary>Leia os termos desta demonstração</summary>
+          <p>Este formulário faz parte de uma atividade de acessibilidade. O preenchimento permite testar a validação dos campos e não cria uma conta. Esta página não envia nem armazena os dados preenchidos.</p>
+        </details>
+        <div class="opcao"><input type="checkbox" id="termos" name="termos" value="aceito" required aria-describedby="erro-termos" data-validar> <label for="termos">Li e aceito os termos desta demonstração (obrigatório)</label></div>
+        <p class="erro" id="erro-termos" aria-live="polite" aria-atomic="true"></p>
+      </fieldset>
+
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Deixe este campo em branco</label>
+        <input type="text" id="website" name="website" autocomplete="off" tabindex="-1">
+      </div>
+
+      <p id="cadastro-status" class="cadastro-status" role="status" tabindex="-1"></p>
+      <noscript><p class="aviso">Ative o JavaScript para testar a validação deste cadastro de demonstração. Nenhum dado será enviado.</p></noscript>
+      <button class="botao" id="cadastro-enviar" type="submit" disabled>Enviar cadastro</button>
+    </form>
+
+  </main>
+
+  <aside class="lateral" aria-labelledby="ajuda-cadastro-titulo">
+    <h2 class="titulo-lateral" id="ajuda-cadastro-titulo">Sobre este cadastro</h2>
+    <p>Use Tab para percorrer os campos. Nos grupos de gênero, use as setas; nas caixas de seleção, use Espaço.</p>
+    <p>As mensagens de erro explicam o que corrigir. No envio, o resumo permite voltar diretamente a cada campo.</p>
+    <p><a href="index.html">Voltar à página inicial</a></p>
+  </aside>
+
+</div>
+
+<footer id="rodape">
+  Harmonia Instrumentos Musicais &bull; CNPJ 00.000.000/0001-00 &bull;
+  <a href="#termos-cadastro">Termos de uso</a> &bull;
+  <a href="#sobre-demonstracao">Privacidade</a>
+</footer>
+
+</div>
+
+</body>
+</html>

@@ -172,6 +172,50 @@ para os caminhos em outros sistemas operacionais.
 
 ---
 
+## Cadastro acessível — Parte 1
+
+O formulário saiu da página inicial e está em [`contato.html`](contato.html), acessível
+pelo menu **Contato** e pelo link ao final da home. As duas páginas usam `styles.css`,
+mantendo os temas claro e escuro e a preferência de movimento reduzido.
+
+Esta etapa acrescenta `cadastro.js` para atender à validação em tempo real. A restrição
+de JavaScript da atividade original continua atendida na página inicial.
+
+O cadastro é uma **demonstração local**: não cria contas, não faz requisições de envio
+e não grava os dados em cookies, `localStorage` ou `sessionStorage`. O botão confirma
+somente a validade dos campos. Sem JavaScript, o envio fica desativado e há uma explicação visível.
+
+Todos os campos têm labels explícitos; os grupos usam `fieldset` e `legend`.
+As instruções e mensagens estão associadas com `aria-describedby`, os erros usam
+`aria-invalid` e regiões `aria-live="polite"`. Durante a digitação, a validação aguarda
+uma pausa de 350 ms para evitar anúncios a cada tecla; ao sair do campo ou enviar,
+a conferência é imediata. Alterar a senha também confere novamente sua confirmação.
+
+Para conferir a atividade:
+
+1. Envie o formulário vazio: o foco deve ir para o resumo dos sete campos obrigatórios.
+2. Ative um link do resumo: o campo correspondente deve receber foco.
+3. Experimente e-mail inválido, CPF com dígitos incorretos, nascimento no futuro,
+   senha sem letra ou número e confirmação diferente. Corrija cada valor e confira
+   que a mensagem e o estado de erro desaparecem.
+4. Deixe telefone, gênero, interesses e origem vazios: eles são opcionais.
+   Quando preenchido, o telefone deve incluir DDD e ter 10 ou 11 dígitos, com +55 opcional.
+5. Percorra tudo por Tab e Shift+Tab; use setas nos rádios e no select e Espaço nas caixas.
+   O campo honeypot não deve aparecer nem entrar na ordem de foco.
+6. Aceite os termos e complete os campos obrigatórios: a mensagem deve informar
+   que o formulário está válido e que os dados não foram enviados ou armazenados.
+7. Confira os temas claro e escuro, uma tela estreita e, quando disponível,
+   um leitor de tela como NVDA ou VoiceOver.
+
+A verificação do CPF confere formato e dígitos verificadores; não consulta a Receita Federal.
+O honeypot bloqueia a validação local quando preenchido. Em uma futura integração,
+o servidor também precisará validar os campos e tratar o honeypot.
+
+Referências: [instruções de formulário](https://www.w3.org/WAI/tutorials/forms/instructions/)
+e [notificações de validação](https://www.w3.org/WAI/tutorials/forms/notifications/) da WAI/W3C.
+
+---
+
 ## Prazo e dúvidas
 
 Prazo: **09/09/2026**.

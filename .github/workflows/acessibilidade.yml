@@ -1,6 +1,6 @@
 name: Acessibilidade
 
-# Roda em todo Pull Request que mexa no HTML.
+# Roda em todo Pull Request que mexa no HTML, CSS ou JavaScript.
 #
 # Sobre permissões: PRs vindos de fork recebem um GITHUB_TOKEN somente-leitura,
 # então este workflow NÃO tenta comentar no PR — isso falharia. Ele escreve o
@@ -9,6 +9,8 @@ on:
   pull_request:
     paths:
       - '**.html'
+      - '**.css'
+      - '**.js'
       - '.htmlvalidate.json'
       - '.github/workflows/acessibilidade.yml'
       - '.github/scripts/**'
@@ -47,7 +49,7 @@ jobs:
       - name: Validar o HTML
         id: htmlvalidate
         continue-on-error: true
-        run: npx --yes html-validate@8 index.html > html-validate.txt 2>&1
+        run: npx --yes html-validate@8 index.html contato.html > html-validate.txt 2>&1
 
       # ------------------------------------------------------------------
       # 2. Varredura de acessibilidade (axe-core, WCAG 2.1 AA)
@@ -60,7 +62,9 @@ jobs:
       - name: Rodar o axe-core
         id: axe
         continue-on-error: true
-        run: node .github/scripts/verificar-acessibilidade.mjs index.html > axe.md 2>&1
+        run: |
+          node .github/scripts/verificar-acessibilidade.mjs index.html > axe-home.md 2>&1
+          node .github/scripts/verificar-acessibilidade.mjs contato.html > axe-cadastro.md 2>&1
 
       # ------------------------------------------------------------------
       # 3. Relatório no resumo do job
@@ -71,7 +75,7 @@ jobs:
           {
             echo "# Relatório de acessibilidade"
             echo
-            echo "Arquivo verificado: \`index.html\`"
+            echo "Páginas verificadas: \`index.html\` e \`contato.html\`"
             echo
 
             echo "## 1. Validação de HTML"
@@ -91,7 +95,11 @@ jobs:
 
             echo "## 2. Varredura WCAG 2.1 AA (axe-core)"
             echo
-            head -c 40000 axe.md 2>/dev/null || echo "(sem saída)"
+            echo "### Página inicial"
+            head -c 40000 axe-home.md 2>/dev/null || echo "(sem saída)"
+            echo
+            echo "### Contato e cadastro"
+            head -c 40000 axe-cadastro.md 2>/dev/null || echo "(sem saída)"
             echo
 
             echo "---"

@@ -46,6 +46,14 @@ try {
   navegador = await chromium.launch(launchOpts);
   const pagina = await navegador.newPage();
   await pagina.goto(pathToFileURL(resolve(arquivo)).href, { waitUntil: 'load' });
+  // Measure settled colors, rather than a partially transparent entrance frame.
+  await pagina.evaluate(async () => {
+    const animacoes = document.getAnimations().filter((animacao) =>
+      animacao.playState === 'running' &&
+      Number.isFinite(animacao.effect?.getComputedTiming().endTime)
+    );
+    await Promise.all(animacoes.map((animacao) => animacao.finished.catch(() => {})));
+  });
   await pagina.addScriptTag({ content: axeSource });
 
   const resultado = await pagina.evaluate(async () =>
