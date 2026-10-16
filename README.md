@@ -147,6 +147,31 @@ justificativa entra no corpo do PR.
 
 ---
 
+## Como testar a preferência de movimento
+
+Abra `index.html` no navegador e altere a preferência do sistema:
+
+- **Windows 11:** Configurações → Acessibilidade → Efeitos visuais → Efeitos de animação.
+- **Windows 10:** Configurações → Facilidade de Acesso → Tela → Mostrar animações no Windows.
+
+| Configuração do sistema | Comportamento esperado |
+| --- | --- |
+| Animações ativadas | O banner aparece com fade-in ao carregar; os cards aumentam discretamente ao passar o mouse ou focar seus botões; o carrossel troca de categoria com uma transição de opacidade. |
+| Animações desativadas (`prefers-reduced-motion: reduce`) | O banner aparece imediatamente; os cards mantêm o tamanho; o carrossel troca de categoria sem transição. |
+
+Recarregue a página para conferir o banner em cada configuração. Para testar o carrossel,
+selecione Guitarras, Baterias ou Teclados. Com o teclado, use Tab para chegar ao grupo,
+as setas para trocar de categoria e Tab novamente para acessar o link do slide selecionado.
+O carrossel avança somente por escolha do usuário. Confira também os temas claro e escuro
+e uma janela estreita. Ao terminar, restaure a configuração original de animações do sistema.
+
+A regra CSS responde à mudança de preferência sem exigir recarga. A recarga serve para
+repetir a animação de entrada do banner. Consulte a
+[documentação de `prefers-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion)
+para os caminhos em outros sistemas operacionais.
+
+---
+
 ## Prazo e dúvidas
 
 Prazo: **09/09/2026**.
