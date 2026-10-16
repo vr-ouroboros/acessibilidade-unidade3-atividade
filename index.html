@@ -5,27 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Harmonia Instrumentos Musicais</title>
 <style>
+  :root {
+    color-scheme: light;
+    --fundo: #f6f6f8;
+    --superficie: #fff;
+    --texto: #1c1c1e;
+    --texto-secundario: #5b6478;
+    --fundo-lateral: #f2f4f9;
+    --fundo-suave: #eef0f5;
+    --borda: #d9dee9;
+    --borda-campo: #70798b;
+    --link: #174ea6;
+    --link-visitado: #673b88;
+    --fundo-botao: #c0392b;
+    --texto-botao: #fff;
+    --erro: #c0392b;
+    --fundo-aviso: #fff8e1;
+    --texto-aviso: #1c1c1e;
+    --borda-aviso: #f0dfa8;
+    --foco: #174ea6;
+    --fundo-topo: #1f2a44;
+    --fundo-menu: #2c3a5e;
+    --texto-topo: #fff;
+    --texto-topo-secundario: #b9c4de;
+    --link-rodape: #dbe2f2;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --fundo: #10141c;
+      --superficie: #191f2b;
+      --texto: #f1f3f7;
+      --texto-secundario: #b9c4d8;
+      --fundo-lateral: #222b3b;
+      --fundo-suave: #273247;
+      --borda: #526078;
+      --borda-campo: #8e9cb4;
+      --link: #9dc1ff;
+      --link-visitado: #d3b5ff;
+      --fundo-botao: #ffac99;
+      --texto-botao: #31110a;
+      --erro: #ffb4a6;
+      --fundo-aviso: #3b321d;
+      --texto-aviso: #fff0bf;
+      --borda-aviso: #9e894f;
+      --foco: #a7c7ff;
+      --fundo-topo: #131c2e;
+      --fundo-menu: #202e49;
+    }
+  }
+
+  /* Escolhas manuais prevalecem sobre a preferência automática do sistema. */
+  :root:has(#tema-claro:checked) {
+    color-scheme: light;
+    --fundo: #f6f6f8;
+    --superficie: #fff;
+    --texto: #1c1c1e;
+    --texto-secundario: #5b6478;
+    --fundo-lateral: #f2f4f9;
+    --fundo-suave: #eef0f5;
+    --borda: #d9dee9;
+    --borda-campo: #70798b;
+    --link: #174ea6;
+    --link-visitado: #673b88;
+    --fundo-botao: #c0392b;
+    --texto-botao: #fff;
+    --erro: #c0392b;
+    --fundo-aviso: #fff8e1;
+    --texto-aviso: #1c1c1e;
+    --borda-aviso: #f0dfa8;
+    --foco: #174ea6;
+    --fundo-topo: #1f2a44;
+    --fundo-menu: #2c3a5e;
+  }
+
+  :root:has(#tema-escuro:checked) {
+    color-scheme: dark;
+    --fundo: #10141c;
+    --superficie: #191f2b;
+    --texto: #f1f3f7;
+    --texto-secundario: #b9c4d8;
+    --fundo-lateral: #222b3b;
+    --fundo-suave: #273247;
+    --borda: #526078;
+    --borda-campo: #8e9cb4;
+    --link: #9dc1ff;
+    --link-visitado: #d3b5ff;
+    --fundo-botao: #ffac99;
+    --texto-botao: #31110a;
+    --erro: #ffb4a6;
+    --fundo-aviso: #3b321d;
+    --texto-aviso: #fff0bf;
+    --borda-aviso: #9e894f;
+    --foco: #a7c7ff;
+    --fundo-topo: #131c2e;
+    --fundo-menu: #202e49;
+  }
+
   * { box-sizing: border-box; }
-  body { margin:0; font-family: system-ui, "Segoe UI", Arial, sans-serif; color:#1c1c1e; background:#f6f6f8; line-height:1.55; }
-  .skip-link { position:absolute; top:0; left:24px; z-index:10; transform:translateY(-120%); background:#fff; color:#1f2a44; padding:10px 14px; border:2px solid #1f2a44; border-radius:0 0 6px 6px; font-weight:700; }
+  body { margin:0; font-family: system-ui, "Segoe UI", Arial, sans-serif; color:var(--texto); background:var(--fundo); line-height:1.55; }
+  a { color:var(--link); }
+  a:visited { color:var(--link-visitado); }
+  :focus-visible { outline:3px solid var(--foco); outline-offset:3px; }
+  input { accent-color:var(--link); }
+  .skip-link { position:absolute; top:0; left:24px; z-index:10; transform:translateY(-120%); background:var(--superficie); color:var(--link); padding:10px 14px; border:2px solid currentColor; border-radius:0 0 6px 6px; font-weight:700; }
   .skip-link:focus { transform:translateY(0); }
-  .wrap { max-width: 1040px; margin: 0 auto; background:#fff; }
-  #topo { display:flex; justify-content:space-between; align-items:flex-start; background:#1f2a44; color:#fff; padding:18px 24px; }
+  .wrap { max-width: 1040px; margin: 0 auto; background:var(--superficie); }
+  #topo { display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:flex-start; background:var(--fundo-topo); color:var(--texto-topo); padding:18px 24px; }
+  .tema { display:none; margin:0; padding:4px 10px 8px; border-color:var(--texto-topo-secundario); font-size:14px; }
+  .tema label { display:inline-flex; align-items:center; gap:5px; padding:5px 3px; cursor:pointer; }
+  .tema input { margin:0; accent-color:var(--texto-topo); }
+  #topo :focus-visible, #menu :focus-visible, #rodape :focus-visible { outline-color:var(--texto-topo); }
+  @supports selector(:has(*)) { .tema { display:block; } }
   .titulo-principal { font-size: 30px; font-weight: 800; letter-spacing:-.5px; }
-  .subtitulo { color:#b9c4de; font-size:14px; }
-  #menu { background:#2c3a5e; padding:10px 24px; }
+  .subtitulo { color:var(--texto-topo-secundario); font-size:14px; }
+  #menu { background:var(--fundo-menu); padding:10px 24px; }
   #menu ul { list-style:none; margin:0; padding:0; }
   #menu li { display:inline; }
-  #menu a { color:#fff; text-decoration:none; margin-right:20px; font-size:15px; display:inline-block; padding:4px 0; }
+  #menu a { color:var(--texto-topo); text-decoration:none; margin-right:20px; font-size:15px; display:inline-block; padding:4px 0; }
   #menu a:hover { text-decoration:underline; }
-  #trilha { padding:10px 24px; font-size:13px; color:#5b6478; background:#eef0f5; }
-  #trilha a { color:#5b6478; }
+  #trilha { padding:10px 24px; font-size:13px; color:var(--texto-secundario); background:var(--fundo-suave); }
+  #trilha a { color:var(--texto-secundario); }
   #trilha ol { list-style:none; margin:0; padding:0; }
   #trilha li { display:inline; }
   #trilha li + li::before { content:" > "; }
   #miolo { display:flex; gap:28px; padding:24px; align-items:flex-start; }
   #conteudo { flex:1 1 auto; min-width:0; }
-  .lateral { flex:0 0 250px; background:#f2f4f9; border:1px solid #e0e4ee; padding:16px; border-radius:8px; font-size:14px; }
+  .lateral { flex:0 0 250px; background:var(--fundo-lateral); border:1px solid var(--borda); padding:16px; border-radius:8px; font-size:14px; }
   .titulo-lateral { font-size:14px; margin:0 0 8px; }
   .links-relacionados { list-style:none; margin:0; padding:0; }
   .links-relacionados li:not(:last-child) { margin-bottom:1.55em; }
@@ -36,23 +143,31 @@
   h6 { font-size:17px; font-weight:700; }
   .categorias-titulo { display:block; font-size:32px; font-weight:normal; margin:0; }
   .lista-categorias { list-style:none; margin:0; padding:0; }
-  .cartao { border:1px solid #e0e4ee; border-radius:8px; padding:14px; margin:10px 0; }
+  .cartao { border:1px solid var(--borda); border-radius:8px; padding:14px; margin:10px 0; }
   .cartao h4 { margin:0; font-size:16px; }
   .lista-produtos { list-style:none; margin:0; padding:0; }
-  .botao { display:inline-block; background:#c0392b; color:#fff; padding:9px 16px; border:0; border-radius:6px; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; line-height:1.55; }
+  .botao { display:inline-block; background:var(--fundo-botao); color:var(--texto-botao); padding:9px 16px; border:0; border-radius:6px; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; line-height:1.55; }
+  .botao:hover { text-decoration:underline; }
+  .tabela-rolagem { overflow-x:auto; }
   table { border-collapse: collapse; width:100%; margin:14px 0; font-size:14px; }
   caption { font-weight:700; text-align:left; padding-bottom:8px; }
-  td, th { border:1px solid #d9dee9; padding:9px 11px; text-align:left; }
-  .cab { background:#eef0f5; font-weight:700; }
-  input[type=text], input[type=email], input[type=tel], input[type=password] { width:100%; padding:9px; border:1px solid #c3c9d6; border-radius:5px; margin-bottom:12px; font-size:14px; }
+  td, th { border:1px solid var(--borda); padding:9px 11px; text-align:left; }
+  .cab { background:var(--fundo-suave); font-weight:700; }
+  input[type=text], input[type=email], input[type=tel], input[type=password] { width:100%; padding:9px; color:var(--texto); background:var(--superficie); border:1px solid var(--borda-campo); border-radius:5px; margin-bottom:12px; font-size:14px; }
+  input::placeholder { color:var(--texto-secundario); opacity:1; }
   .rotulo-campo { display:block; font-weight:600; margin:14px 0 6px; }
-  .erro { color:#c0392b; font-size:13px; margin:-6px 0 12px; }
-  fieldset { border:1px solid #c3c9d6; border-radius:5px; margin:14px 0; padding:10px 12px; }
+  .erro { color:var(--erro); font-size:13px; margin:-6px 0 12px; }
+  fieldset { border:1px solid var(--borda-campo); border-radius:5px; margin:14px 0; padding:10px 12px; }
   legend { font-weight:600; padding:0 4px; }
   .opcao { display:block; }
-  #rodape { background:#1f2a44; color:#b9c4de; padding:20px 24px; font-size:13px; margin-top:10px; }
-  #rodape a { color:#dbe2f2; }
-  .aviso { background:#fff8e1; border:1px solid #f0dfa8; padding:12px 14px; border-radius:6px; font-size:14px; }
+  #rodape { background:var(--fundo-topo); color:var(--texto-topo-secundario); padding:20px 24px; font-size:13px; margin-top:10px; }
+  #rodape a { color:var(--link-rodape); }
+  .aviso { background:var(--fundo-aviso); color:var(--texto-aviso); border:1px solid var(--borda-aviso); padding:12px 14px; border-radius:6px; font-size:14px; }
+  @media (max-width: 740px) {
+    #miolo { flex-direction:column; }
+    #conteudo, .lateral { width:100%; }
+    .lateral { flex-basis:auto; }
+  }
 </style>
 </head>
 <body>
@@ -66,6 +181,12 @@
       <div class="titulo-principal">Harmonia Instrumentos Musicais</div>
       <div class="subtitulo">Tudo para o seu som desde 1998</div>
     </div>
+    <fieldset class="tema">
+      <legend>Tema</legend>
+      <label><input type="radio" name="tema" id="tema-sistema" value="sistema" checked> Sistema</label>
+      <label><input type="radio" name="tema" id="tema-claro" value="claro"> Claro</label>
+      <label><input type="radio" name="tema" id="tema-escuro" value="escuro"> Escuro</label>
+    </fieldset>
     <a href="carrinho.html"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Cpath%20d%3D%22M1.5%202h3l2.7%2012.4a2%202%200%200%200%202%201.6h8.1a2%202%200%200%200%202-1.6L21%206H6%22%2F%3E%3C%2Fsvg%3E" width="34" height="34" alt="Ir para o carrinho"></a>
   </header>
 
@@ -142,6 +263,7 @@
 
     <h2>Comparativo de modelos</h2>
 
+    <section class="tabela-rolagem" aria-label="Comparativo de modelos" tabindex="0">
     <table>
       <caption>Características e preços das guitarras elétricas</caption>
       <thead>
@@ -173,6 +295,7 @@
         </tr>
       </tbody>
     </table>
+    </section>
 
     <h2>Fale com um vendedor</h2>
 
