@@ -128,8 +128,7 @@
   form.addEventListener('input', (event) => {
     status.textContent = '';
     const field = event.target;
-    if (!fields.includes(field) || event.isComposing) return;
-    touched.add(field.id);
+    if (!fields.includes(field) || event.isComposing || !touched.has(field.id)) return;
     clearTimeout(timers.get(field.id));
     // Allow a brief typing pause before announcing validation feedback.
     timers.set(field.id, setTimeout(() => validateChangedField(field), 350));

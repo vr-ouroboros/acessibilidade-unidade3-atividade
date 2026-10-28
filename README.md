@@ -187,9 +187,19 @@ somente a validade dos campos. Sem JavaScript, o envio fica desativado e há uma
 
 Todos os campos têm labels explícitos; os grupos usam `fieldset` e `legend`.
 As instruções e mensagens estão associadas com `aria-describedby`, os erros usam
-`aria-invalid` e regiões `aria-live="polite"`. Durante a digitação, a validação aguarda
+`aria-invalid` e regiões `aria-live="polite"`. Após a primeira saída do campo, a validação durante a digitação aguarda
 uma pausa de 350 ms para evitar anúncios a cada tecla; ao sair do campo ou enviar,
 a conferência é imediata. Alterar a senha também confere novamente sua confirmação.
+
+### Parte 2 — Validação com feedback acessível
+
+Ao tentar enviar, o resumo no topo do formulário usa `role="alert"`, recebe foco
+e apresenta links para cada campo com erro. Ao corrigir um campo, sua mensagem e
+`aria-invalid` são removidos, e o resumo é atualizado. Sem erros, o resumo é ocultado.
+
+Teste automatizado de interação: `node .github/scripts/testar-validacao.mjs`.
+Requer Playwright e Chromium instalados; a variável `CHROME_PATH` permite usar
+um navegador Chromium disponível na máquina.
 
 Para conferir a atividade:
 
