@@ -106,17 +106,17 @@ input { accent-color:var(--link); }
 .skip-link:focus { transform:translateY(0); }
 .wrap { max-width: 1040px; margin: 0 auto; background:var(--superficie); }
 #topo { display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:flex-start; background:var(--fundo-topo); color:var(--texto-topo); padding:18px 24px; }
-.tema { display:none; margin:0; padding:4px 10px 8px; border-color:var(--texto-topo-secundario); font-size:14px; }
-.tema label { display:inline-flex; align-items:center; gap:5px; padding:5px 3px; cursor:pointer; }
+#topo > a { display:grid; place-items:center; min-width:44px; min-height:44px; }
+.tema { display:none; min-width:0; margin:0; padding:4px 10px 8px; border-color:var(--texto-topo-secundario); font-size:14px; }
+.tema label { display:inline-flex; align-items:center; gap:5px; padding:5px 3px; min-height:44px; cursor:pointer; }
 .tema input { margin:0; accent-color:var(--texto-topo); }
 #topo :focus-visible, #menu :focus-visible, #rodape :focus-visible { outline-color:var(--texto-topo); }
 @supports selector(:has(*)) { .tema { display:block; } }
 .titulo-principal { font-size: 30px; font-weight: 800; letter-spacing:-.5px; }
 .subtitulo { color:var(--texto-topo-secundario); font-size:14px; }
 #menu { background:var(--fundo-menu); padding:10px 24px; }
-#menu ul { list-style:none; margin:0; padding:0; }
-#menu li { display:inline; }
-#menu a { color:var(--texto-topo); text-decoration:none; margin-right:20px; font-size:15px; display:inline-block; padding:4px 0; }
+#menu ul { display:flex; flex-wrap:wrap; gap:4px 8px; list-style:none; margin:0; padding:0; }
+#menu a { display:flex; align-items:center; min-height:44px; padding:4px 10px; color:var(--texto-topo); text-decoration:none; font-size:15px; }
 #menu a:hover { text-decoration:underline; }
 #trilha { padding:10px 24px; font-size:13px; color:var(--texto-secundario); background:var(--fundo-suave); }
 #trilha a { color:var(--texto-secundario); }
@@ -142,14 +142,14 @@ h2 { font-size:21px; }
 h6 { font-size:17px; font-weight:700; }
 .categorias-titulo { display:block; font-size:32px; font-weight:normal; margin:0; }
 .lista-categorias { list-style:none; margin:0; padding:0; }
-.cartao { border:1px solid var(--borda); border-radius:8px; padding:14px; margin:10px 0; transition:transform 200ms ease; }
+.cartao { border:1px solid var(--borda); border-radius:8px; padding:14px; transition:transform 200ms ease; }
 .cartao:hover, .cartao:focus-within { transform:scale(1.015); }
 .cartao h4 { margin:0; font-size:16px; }
-.lista-produtos { list-style:none; margin:0; padding:0; }
-.botao { display:inline-block; background:var(--fundo-botao); color:var(--texto-botao); padding:9px 16px; border:0; border-radius:6px; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; line-height:1.55; }
+.lista-produtos { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px; list-style:none; margin:0; padding:0; }
+.botao { display:inline-block; min-height:44px; background:var(--fundo-botao); color:var(--texto-botao); padding:9px 16px; border:0; border-radius:6px; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; line-height:1.55; }
 .botao:hover { text-decoration:underline; }
 .tabela-rolagem { overflow-x:auto; }
-table { border-collapse: collapse; width:100%; margin:14px 0; font-size:14px; }
+table { border-collapse: collapse; width:100%; min-width:26rem; margin:14px 0; font-size:14px; }
 caption { font-weight:700; text-align:left; padding-bottom:8px; }
 td, th { border:1px solid var(--borda); padding:9px 11px; text-align:left; }
 .cab { background:var(--fundo-suave); font-weight:700; }
@@ -185,7 +185,7 @@ legend { font-weight:600; padding:0 4px; }
   .cartao, .carrossel-slide { transition:none; }
   .cartao:hover, .cartao:focus-within { transform:none; }
 }
-@media (max-width: 740px) {
+@media (width < 1024px) {
   #miolo { flex-direction:column; }
   #conteudo, .lateral { width:100%; }
   .lateral { flex-basis:auto; }
@@ -215,8 +215,18 @@ legend { font-weight:600; padding:0 4px; }
 .resumo-erros li { margin:8px 0; overflow-wrap:anywhere; }
 .cadastro-status { margin:0; }
 .cadastro-status:not(:empty) { padding:14px; margin-bottom:16px; background:var(--fundo-suave); border:1px solid var(--borda-campo); border-radius:6px; }
-.cadastro .botao { min-height:44px; font-size:16px; }
+.cadastro .botao { font-size:16px; }
 .honeypot { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
-@media (max-width: 420px) {
+@media (width < 600px) {
+  #topo, #menu, #trilha, #miolo, #rodape { padding-inline:16px; }
+  #topo > div { flex-basis:100%; }
+  #topo { align-items:center; gap:12px; }
+  .tema { flex:1 1 0; }
+  .titulo-principal { font-size:24px; }
+  .titulo-pagina { font-size:24px; }
+  #miolo { gap:20px; padding-block:16px; }
+  .banner { padding:16px; }
+  .lista-produtos { grid-template-columns:minmax(0, 1fr); gap:12px; }
+  .botao { width:100%; }
   .cadastro fieldset { padding:14px 12px; }
 }
